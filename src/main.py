@@ -1,6 +1,24 @@
 import random
 
 def check_equality(user_guess: int, secret_number: int) -> int:
+    """
+    This function compares the user's guess with the secret number and returns:
+
+    Parameters:
+    -----------
+    user_guess: int
+        The number guessed by the user.
+    secret_number: int
+        The secret number that the user is trying to guess.
+
+    Returns:
+    -----------
+    int
+        0 if the user's guess is correct.
+        1 if the user's guess is greater than the secret number.
+        -1 if the user's guess is less than the secret number.
+    """
+
     if user_guess == secret_number:
         return 0
     elif user_guess > secret_number:
@@ -8,6 +26,24 @@ def check_equality(user_guess: int, secret_number: int) -> int:
     return -1
 
 def loop_until_correct(secret_number: int) -> list:
+    """
+    This function continuously prompts the user to guess the secret number
+    until they guess it correctly. 
+    It keeps track of the total number of attempts and the number of correct
+    attempts.
+    
+    Parameter:
+    -----------
+    secret_number: int
+        The secret number that the user is trying to guess.
+
+    Returns:
+    -----------
+    list
+        A list containing the total number of attempts and the number of
+        correct attempts.
+    """
+
     comparison_result = None
     attempts = [0,0]
     while True:
@@ -29,6 +65,21 @@ def loop_until_correct(secret_number: int) -> list:
     return attempts
 
 def set_range() -> list:
+    """
+    This function prompts the user to input the lower and upper bounds for the range
+    of numbers to be used in the game. It ensures that the user inputs valid integers
+    and returns the bounds as a list.
+
+    Parameters:
+    -----------
+    None
+
+    Returns:
+    -----------
+    list
+        A list containing the lower and upper bounds for the range of numbers.
+    """
+
     while True:
         try:
             bounds = [0,0]
@@ -39,6 +90,21 @@ def set_range() -> list:
             print("Por favor, ingrese un número válido.")
 
 def start_game() -> None:
+    """
+    This function initializes the game by welcoming the user, setting
+    the range for the secret number, generating a random secret number
+    within that range, and then calling the function to start the guessing
+    loop.
+
+    Parameters:
+    -----------
+    None
+
+    Returns:
+    -----------
+    None
+    """
+
     print("¡Bienvenido al juego de adivinar el número!")
     print("Primero, vamos a establecer un rango de números para el juego...")
     lower_bound, upper_bound = set_range()
@@ -50,6 +116,18 @@ def start_game() -> None:
     print("Gracias por jugar. ¡Hasta la próxima!")
 
 def menu() -> None:
+    """
+    This function displays the main menu and handles the user's choice.
+
+    Parameters:
+    -----------
+    None
+
+    Returns:
+    -----------
+    None
+    """
+
     while True:
         print("Menú:")
         print("1. Jugar")
