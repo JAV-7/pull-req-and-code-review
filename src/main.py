@@ -1,20 +1,33 @@
 import random
 
-def start_game():
-    secret_number = random.randint(1, 20)
-    user_guess = 0
+def check_equality(user_guess: int, secret_number: int) -> int:
+    if user_guess == secret_number:
+        return 0
+    elif user_guess > secret_number:
+        return 1
+    return -1
+
+def loop_until_correct(secret_number: int):
+    comparison_result = None
     attempts = 0
-    print("Adivina el número entre 1 y 20")
-    while user_guess != secret_number:
+    while True:
         user_guess = int(input("Ingresa tu intento: "))
         attempts += 1
-        if user_guess < secret_number:
-            print("Muy bajo")
-        elif user_guess > secret_number:
-            print("Muy alto")
-        elif user_guess == secret_number:
-            print("¡Correcto!")
+        comparison_result = check_equality(user_guess, secret_number)
+        if comparison_result == 0:
+            print("¡Felicidades! Has adivinado el número.")
+            break
+        elif comparison_result == 1:
+            print("Intenta con un número más bajo.")
         else:
-            print("Error")
+            print("Intenta con un número más alto.")
+    return attempts
+
+def start_game():
+    secret_number = random.randint(1, 20)
+    print("Adivina el número entre 1 y 20")
+    attempts = loop_until_correct(secret_number)
     print("Número de intentos:", attempts)
-start_game()
+
+if __name__ == "__main__":
+    start_game()
