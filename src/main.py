@@ -29,9 +29,11 @@ def loop_until_correct(secret_number: int):
 
 def start_game():
     secret_number = random.randint(1, 20)
-    print("Adivina el número entre 1 y 20.")
+    print("¡Bienvenido al juego de adivinar el número!")
+    print("¿Puedes adivinar el número secreto entre 1 y 20?")
     attempts = loop_until_correct(secret_number)
     print("Número de intentos:", attempts)
-
+    print("Gracias por jugar. ¡Hasta la próxima!")
+    
 if __name__ == "__main__":
     start_game()
