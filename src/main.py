@@ -1,30 +1,20 @@
-"""
-    main.py
-    Francisco Javier Ramos Jimenez.
-    Date: 06/03/2026
-    Activity: Pull Request and Code Review
-    Subject: Software Quality
-    V 1.0.0
-"""
+import random
 
-from museum import Museum
-from oeuvre import Oeuvre
-from sculpture import Sculpture
-
-
-def __main__():
-    museum = Museum("Louvre", "Paris")
-
-    mona_lisa = Oeuvre("Mona Lisa", "Leonardo da Vinci", 1503)
-    liberty = Sculpture("Statue of Liberty", "Frederic Auguste Bartholdi", "Copper")
-
-    museum.add_oeuvre(mona_lisa)
-    museum.add_sculpture(liberty)
-
-    print(museum)
-    print()
-    museum.artwork_details()
-
-
-if __name__ == "__main__":
-    __main__()
+def startGame():
+    number = random.randint(1, 20)
+    guess = 0
+    attempts = 0
+    print("Adivina el número entre 1 y 20")
+    while guess != number:
+        guess = int(input("Ingresa tu intento: "))
+        attempts += 1
+        if guess < number:
+            print("Muy bajo")
+        elif guess > number:
+            print("Muy alto")
+        elif guess == number:
+            print("¡Correcto!")
+        else:
+            print("Error")
+    print("Número de intentos:", attempts)
+startGame()
