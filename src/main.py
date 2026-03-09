@@ -48,8 +48,8 @@ def loop_until_correct(secret_number: int) -> list:
     attempts = [0,0]
     while True:
         try:
-            user_guess = int(input("Ingresa tu intento: "))
             attempts[0] += 1
+            user_guess = int(input("Ingresa tu intento: "))
         except ValueError:
             print("Por favor, ingresa un número válido.")
             continue
