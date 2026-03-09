@@ -48,6 +48,20 @@ def start_game() -> None:
     print("Número de intentos realizados:", attempts[0])
     print("Número de intentos acertados:", attempts[1])
     print("Gracias por jugar. ¡Hasta la próxima!")
-    
+
+def menu() -> None:
+    while True:
+        print("Menú:")
+        print("1. Jugar")
+        print("2. Salir")
+        choice = input("Selecciona una opción (1 o 2): ").strip()
+        if choice == "1":
+            start_game()
+        elif choice == "2":
+            print("¡Hasta la próxima!")
+            break
+        else:
+            print("Opción no válida. Por favor, selecciona una opción válida.")
+
 if __name__ == "__main__":
-    start_game()
+    menu()
