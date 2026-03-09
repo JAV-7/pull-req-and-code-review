@@ -28,10 +28,22 @@ def loop_until_correct(secret_number: int) -> list:
             print("Intenta con un número más alto.")
     return attempts
 
+def set_range() -> list:
+    while True:
+        try:
+            bounds = [0,0]
+            bounds[0] = int(input("Ingresa el límite inferior del rango: "))
+            bounds[1] = int(input("Ingresa el límite superior del rango: "))
+            return bounds
+        except ValueError:
+            print("Por favor, ingrese un número válido.")
+
 def start_game() -> None:
-    secret_number = random.randint(1, 20)
     print("¡Bienvenido al juego de adivinar el número!")
-    print("¿Puedes adivinar el número secreto entre 1 y 20?")
+    print("Primero, vamos a establecer un rango de números para el juego...")
+    lower_bound, upper_bound = set_range()
+    secret_number = random.randint(lower_bound, upper_bound)
+    print(f"¿Puedes adivinar el número secreto entre {lower_bound} y {upper_bound}?")
     attempts = loop_until_correct(secret_number)
     print("Número de intentos realizados:", attempts[0])
     print("Número de intentos acertados:", attempts[1])
