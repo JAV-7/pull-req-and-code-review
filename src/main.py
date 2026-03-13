@@ -25,6 +25,7 @@ def check_equality(user_guess: int, secret_number: int) -> int:
         return 1
     return -1
 
+
 def loop_until_correct(secret_number: int) -> list:
     """
     This function continuously prompts the user to guess the secret number
@@ -43,26 +44,26 @@ def loop_until_correct(secret_number: int) -> list:
         A list containing the total number of attempts and the number of
         correct attempts.
     """
-
-    comparison_result = None
+    
     attempts = [0,0]
     while True:
         try:
             attempts[0] += 1
             user_guess = int(input("Ingresa tu intento: "))
         except ValueError:
-            print("Por favor, ingresa un número válido.")
+            print("Por favor, ingresa un número válido.\n")
             continue
         attempts[1] += 1
         comparison_result = check_equality(user_guess, secret_number)
         if comparison_result == 0:
-            print("¡Felicidades! Has adivinado el número.")
+            print("¡Felicidades! Has adivinado el número.\n")
             break
         elif comparison_result == 1:
-            print("Intenta con un número más bajo.")
+            print("Intenta con un número más bajo.\n")
         else:
-            print("Intenta con un número más alto.")
+            print("Intenta con un número más alto.\n")
     return attempts
+
 
 def set_range() -> list:
     """
@@ -85,9 +86,13 @@ def set_range() -> list:
             bounds = [0,0]
             bounds[0] = int(input("Ingresa el límite inferior del rango: "))
             bounds[1] = int(input("Ingresa el límite superior del rango: "))
+            if bounds[0] >= bounds[1]:
+                print("El límite inferior debe ser menor que el límite superior. Por favor, inténtalo de nuevo.\n")
+                continue
             return bounds
         except ValueError:
-            print("Por favor, ingrese un número válido.")
+            print("Por favor, ingrese un número válido.\n")
+
 
 def start_game() -> None:
     """
@@ -105,15 +110,16 @@ def start_game() -> None:
     None
     """
 
-    print("¡Bienvenido al juego de adivinar el número!")
-    print("Primero, vamos a establecer un rango de números para el juego...")
+    print("¡Bienvenido al juego de adivinar el número!\n")
+    print("Primero, vamos a establecer un rango de números para el juego...\n")
     lower_bound, upper_bound = set_range()
     secret_number = random.randint(lower_bound, upper_bound)
-    print(f"¿Puedes adivinar el número secreto entre {lower_bound} y {upper_bound}?")
+    print(f"¿Puedes adivinar el número secreto entre {lower_bound} y {upper_bound}?\n")
     attempts = loop_until_correct(secret_number)
     print("Número de intentos realizados:", attempts[0])
-    print("Número de intentos acertados:", attempts[1])
-    print("Gracias por jugar. ¡Hasta la próxima!")
+    print("Número de intentos acertados:", attempts[1], "\n")
+    print("Gracias por jugar. ¡Hasta la próxima!\n")
+
 
 def menu() -> None:
     """
@@ -131,15 +137,16 @@ def menu() -> None:
     while True:
         print("Menú:")
         print("1. Jugar")
-        print("2. Salir")
+        print("2. Salir\n")
         choice = input("Selecciona una opción (1 o 2): ").strip()
         if choice == "1":
             start_game()
         elif choice == "2":
-            print("¡Hasta la próxima!")
+            print("¡Hasta la próxima!\n")
             break
         else:
-            print("Opción no válida. Por favor, selecciona una opción válida.")
+            print("Opción no válida. Por favor, selecciona una opción válida.\n")
+
 
 if __name__ == "__main__":
     menu()
